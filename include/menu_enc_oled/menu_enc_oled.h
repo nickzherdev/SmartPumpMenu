@@ -13,21 +13,18 @@ void durationCallback(void);
 
 void nothingCallback(void);
 
-// enum class MY_PERIOD { 
-//   TEN_SEC, 
-//   ONE_HOUR, 
-//   // HALF_DAY,
-//   ONE_DAY,
-//   // TWO_DAYS,
-//   // ONE_WEEK,
-// };
-
 enum class MY_PERIOD { 
   TEN_SEC, 
   ONE_HOUR, 
   ONE_DAY,
+  TWO_DAYS,
+  ONE_WEEK,
 };
 
-// int getMs(MY_PERIOD period);
+int getPeriodMs(MY_PERIOD period);
 
-String getPrintValue(MY_PERIOD period);
+String getPeriodPrintValue(MY_PERIOD period);
+
+void printPeriodAvailableOptions(void);
+
+void printChosenBox(uint8_t option);
