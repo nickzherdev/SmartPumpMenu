@@ -21,6 +21,15 @@ enum class MY_PERIOD {
   ONE_WEEK,
 };
 
+enum class MY_DURATION {
+  FIVE_SEC,
+  SEVEN_SEC,
+  TEN_SEC,
+  FIFTEEN_SEC,
+  THIRTY_SEC,
+  ONE_MINUTE
+};
+
 int getPeriodMs(MY_PERIOD period);
 
 String getPeriodPrintValue(MY_PERIOD period);
@@ -28,3 +37,7 @@ String getPeriodPrintValue(MY_PERIOD period);
 void printPeriodAvailableOptions(void);
 
 void printChosenBox(uint8_t option);
+
+String getDurationdPrintValue(MY_DURATION duration);
+
+void printDurationAvailableOptions(void);
