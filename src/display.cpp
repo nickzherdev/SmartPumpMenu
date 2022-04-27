@@ -16,7 +16,6 @@ void update_display(void) {
 }
 
 void printMainMenu(Settings &settings) {
-  /* меню */
   oled.clear();           // Очищаем буфер
   oled.home();            // Курсор в левый верхний угол
   oled.println(F(" SmartPump"));
@@ -130,10 +129,10 @@ int getDurationMs(MY_DURATION duration) {
 
 void printChosenBox(const uint8_t option) {
   if (option <= 2) {
-    oled.roundRect(option*40, 20, 39+option*40, 40, OLED_STROKE);  // скруглённый прямоугольник (x0,y0,x1,y1)
+    oled.roundRect(option*40, 20, 39+option*40, 40, OLED_STROKE);  // (x0,y0,x1,y1)
   }
   else if (option >2) {
-    oled.roundRect((option-3)*43, 43, 37+(option-3)*44, 63, OLED_STROKE);  // скруглённый прямоугольник (x0,y0,x1,y1)
+    oled.roundRect((option-3)*43, 43, 37+(option-3)*44, 63, OLED_STROKE);  // (x0,y0,x1,y1)
   }
 }
 
