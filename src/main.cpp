@@ -2,10 +2,7 @@
 #include <EncButton.h>
 #include "menu_enc_oled/menu_enc_oled.h"
 
-// #define OLED_SOFT_BUFFER_64     // Буфер на стороне МК
 GyverOLED<SSD1306_128x64, OLED_BUFFER> oled;
-// GyverOLED<SSD1306_128x64, OLED_NO_BUFFER> oled;
-// GyverOLED<SSD1306_128x64> oled;
 EncButton<EB_TICK, D6, D5, D7> enc;  // энкодер с кнопкой <A, B, KEY>
 
 #define ITEMS 2               // Общее кол во пунктов, без заголовка
@@ -25,9 +22,12 @@ void setup() {
 }
 
 void loop() {
-  static int8_t pointer = 2; // Переменная указатель
-
   enc.tick();                     // опрос происходит здесь
+  handle_user_input_encoder();
+}
+
+void handle_user_input_encoder(void) {
+  static int8_t pointer = 2; // Переменная указатель
 
   if (enc.turn()) {
     if (enc.left()) {
@@ -45,7 +45,6 @@ void loop() {
 
   if (enc.click()) {   // Нажатие на ОК - переход в пункт меню
     switch (pointer) {  // По номеру указателей располагаем вложенные функции (можно вложенные меню)
-      // case 0: break;  // По нажатию на ОК при наведении на 0й пункт вызвать функцию
       case 2: periodCallback(); break;
       case 4: durationCallback(); break;
     }

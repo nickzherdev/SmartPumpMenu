@@ -1,6 +1,8 @@
 #pragma once
 #include <Arduino.h>
 
+void handle_user_input_encoder(void);
+
 void printMainMenu(void);
 
 void printPointer(uint8_t pointer);
