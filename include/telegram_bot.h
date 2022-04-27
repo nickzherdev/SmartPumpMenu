@@ -1,7 +1,8 @@
 #pragma once
+#include "options.h"
 
-void handleNewMessages(int numNewMessages);
+void handleNewMessages(int numNewMessages, Settings &settings);
 
 void connect_wifi(void);
 
-void start_bot(void);
+void run_bot(Settings &settings);

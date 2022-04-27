@@ -6,12 +6,12 @@
 Settings settings;
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(57600);
   init_display();
   connect_wifi();
 }
 
 void loop() {
   handle_user_input_encoder(settings);
-  start_bot();
+  run_bot(settings);
 }
