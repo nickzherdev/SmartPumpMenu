@@ -46,45 +46,6 @@ void handleNewMessages(int numNewMessages, Settings &settings) {
 
     String from_name = bot.messages[i].from_name;
 
-    if (text == "/ledon")
-    {
-      digitalWrite(ledPin, LOW); // turn the LED on (HIGH is the voltage level)
-      ledStatus = 1;
-      bot.sendMessage(chat_id, "Led is ON", "");
-    }
-
-    if (text == "/ledoff")
-    {
-      ledStatus = 0;
-      digitalWrite(ledPin, HIGH); // turn the LED off (LOW is the voltage level)
-      bot.sendMessage(chat_id, "Led is OFF", "");
-    }
-
-    if (text == "set_period")
-    {
-      String keyboardJson = "[[\"10s\", \"1h\", \"1d\"],[\"2d\", \"1w\"],[\"get_period\", \"/options\"]]";
-      bot.sendMessageWithReplyKeyboard(chat_id, "Choose from one of the following options", "", keyboardJson, true);
-    }
-    if (text == "10s")
-    {
-      settings.chosen_period = 0;
-      bot.sendMessage(chat_id, "10s period is set", "");
-    }
-    if (text == "2d")
-    {
-      settings.chosen_period = 3;
-      bot.sendMessage(chat_id, "2d period is set", "");
-    }
-    if (text == "get_period")
-    {
-      String message = getPeriodPrintValue(static_cast<MY_PERIOD>(settings.chosen_period));
-      bot.sendMessage(chat_id, message, "");
-    }
-    if (text == "get_duration")
-    {
-      String message = getDurationdPrintValue(static_cast<MY_DURATION>(settings.chosen_duration));
-      bot.sendMessage(chat_id, message, "");
-    }
     if (text == "/status")
     {
       if (ledStatus)
@@ -95,6 +56,93 @@ void handleNewMessages(int numNewMessages, Settings &settings) {
       {
         bot.sendMessage(chat_id, "Led is OFF", "");
       }
+    }
+    if (text == "/ledon")
+    {
+      digitalWrite(ledPin, LOW);
+      ledStatus = 1;
+      bot.sendMessage(chat_id, "Led is ON", "");
+    }
+    if (text == "/ledoff")
+    {
+      ledStatus = 0;
+      digitalWrite(ledPin, HIGH);
+      bot.sendMessage(chat_id, "Led is OFF", "");
+    }
+    if (text == "get_period")
+    {
+      String message = getPeriodPrintValue(static_cast<MY_PERIOD>(settings.chosen_period));
+      bot.sendMessage(chat_id, message, "");
+    }
+    if (text == "set_period")
+    {
+      String keyboardJson = "[[\"10s\", \"1h\", \"1d\"],[\"2d\", \"1w\"],[\"get_period\", \"/options\"]]";
+      bot.sendMessageWithReplyKeyboard(chat_id, "Choose from one of the following options", "", keyboardJson, true);
+    }
+    if (text == "10s")
+    {
+      settings.chosen_period = 0;
+      bot.sendMessage(chat_id, "10s period is set", "");
+    }
+    if (text == "1h")
+    {
+      settings.chosen_period = 1;
+      bot.sendMessage(chat_id, "1h period is set", "");
+    }
+    if (text == "1d")
+    {
+      settings.chosen_period = 2;
+      bot.sendMessage(chat_id, "1d period is set", "");
+    }
+    if (text == "2d")
+    {
+      settings.chosen_period = 3;
+      bot.sendMessage(chat_id, "2d period is set", "");
+    }
+    if (text == "1w")
+    {
+      settings.chosen_period = 4;
+      bot.sendMessage(chat_id, "1w period is set", "");
+    }
+    if (text == "set_duration")
+    {
+      String keyboardJson = "[[\"5s\", \"7s\", \"10s\"],[\"15s\", \"30s\", \"1m\"],[\"get_duration\", \"/options\"]]";
+      bot.sendMessageWithReplyKeyboard(chat_id, "Choose from one of the fol2dlowing options", "", keyboardJson, true);
+    }
+    if (text == "5s")
+    {
+      settings.chosen_duration = 0;
+      bot.sendMessage(chat_id, "5s period is set", "");
+    }
+    if (text == "7s")
+    {
+      settings.chosen_duration = 1;
+      bot.sendMessage(chat_id, "7s period is set", "");
+    }
+    if (text == "10s")
+    {
+      settings.chosen_duration = 2;
+      bot.sendMessage(chat_id, "10s period is set", "");
+    }
+    if (text == "15s")
+    {
+      settings.chosen_duration = 3;
+      bot.sendMessage(chat_id, "15s period is set", "");
+    }
+    if (text == "30s")
+    {
+      settings.chosen_duration = 4;
+      bot.sendMessage(chat_id, "30s period is set", "");
+    }
+    if (text == "1m")
+    {
+      settings.chosen_duration = 5;
+      bot.sendMessage(chat_id, "1m period is set", "");
+    }
+    if (text == "get_duration")
+    {
+      String message = getDurationdPrintValue(static_cast<MY_DURATION>(settings.chosen_duration));
+      bot.sendMessage(chat_id, message, "");
     }
 
     if (text == "/options")
