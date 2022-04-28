@@ -13,6 +13,8 @@ https://alexgyver.ru/pump-sleep/
 Датчик уровня воды
 https://radioprog.ru/post/828
 
+Telegram: Control ESP32/ESP8266 Outputs (Arduino IDE)
+https://randomnerdtutorials.com/telegram-control-esp32-esp8266-nodemcu-outputs/
 
 ## Done
 - просыпается по таймеру, поливает, засыпает
@@ -50,3 +52,18 @@ https://radioprog.ru/post/828
     - переключение на сеть при появлении питания
     - логика и статус питаются от батареи
     - моторы питаются от эл-ва (и батареи если отключилась сеть)
+
+
+## Snippets
+
+// раздефайнить или задефайнить для использования
+//#define DEBUG_ENABLE
+
+#ifdef DEBUG_ENABLE
+#define DEBUG(x) Serial.println(x)
+#else
+#define DEBUG(x)
+#endif
+
+Если DEBUG задефайнен, то DEBUG_PRINT – это макро-функция, которая выводит значение в порт. А если не задефайнен – все вызовы DEBUG_PRINT просто убираются из кода и экономят память!
+
