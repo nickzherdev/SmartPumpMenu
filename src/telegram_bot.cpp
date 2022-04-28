@@ -24,7 +24,7 @@ unsigned long bot_lasttime;
 int ledStatus = 0;
 
 // Checks for new messages every 1 second.
-const unsigned int botRequestDelay = 1000; // mean time between scan messages
+const unsigned int botRequestDelay = 5000; // mean time between scan messages
 unsigned long lastTimeBotRan; // last time messages' scan has been done
 
 void handleNewMessages(int numNewMessages, Settings &settings) {
@@ -152,13 +152,16 @@ void run_bot(Settings &settings) {
   if (millis() > lastTimeBotRan + botRequestDelay)  {
     int numNewMessages = bot.getUpdates(bot.last_message_received + 1);
 
-    while(numNewMessages) {
+    // was "while"
+    // removed because of blocking main thread
+    if(numNewMessages) {
       Serial.println("got response");
       handleNewMessages(numNewMessages, settings);
       printMainMenu(settings);
       update_display();
-      numNewMessages = bot.getUpdates(bot.last_message_received + 1);
+      // numNewMessages = bot.getUpdates(bot.last_message_received + 1);
     }
+
     lastTimeBotRan = millis();
   }
 }
